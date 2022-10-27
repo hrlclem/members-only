@@ -46,7 +46,7 @@ app.use(function(err, req, res, next) {
 const mongoose = require("mongoose");
 
 // Set up default mongoose connection
-const mongoDB = "mongodb+srv://inventoryUsername:inventoryPassword@inventory-app.tdcky6s.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = "mongodb+srv://MONGO_USERNAME:MONGO_PASSWORD@inventory-app.tdcky6s.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Get the default connection
