@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(
+        type='text', 
+        placeholder='Name' 
+        name='name' 
+        required = 'true'
+        value=(undefined=== user ? '' : user.name))
+
+      label(for='surname') Surname:
+      input#surname.form-control(
+        type='text', 
+        placeholder='Surname' 
+        name='surname' 
+        required = 'true'
+        value=(undefined=== user ? '' : user.surname))
+
+      label(for='email') Email:
+      input#email.form-control(
+        type='email', 
+        placeholder='Email' 
+        name='email' 
+        required = 'true'
+        value=(undefined=== user ? '' : user.email))
+
+      label(for='password') Password:
+      input#password.form-control(
+        type='password', 
+        placeholder='Password' 
+        name='password' 
+        required = 'true'
+        value=(undefined=== user ? '' : user.password))
+
+      label(for='confPassword') Confirm password:
+      input#confPassword.form-control(
+        type='password', 
+        placeholder='Confirm password' 
+        name='confPassword' 
+        required = 'true'
+      )
+
+    button.btn.btn-primary(type='submit') Submit

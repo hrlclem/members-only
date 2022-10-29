@@ -24,7 +24,7 @@ const MessageSchema = new Schema({
 });
 
 MessageSchema.virtual("url").get(function () {
-    return "/comment/" + this._id;
+    return "/users/comments/" + this._id;
   });
 
 module.exports = mongoose.model("Message", MessageSchema);
