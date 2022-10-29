@@ -8,6 +8,7 @@ var session = require("express-session");
 var LocalStrategy = require("passport-local").Strategy;
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bcrypt = require("bcryptjs");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -53,10 +54,13 @@ passport.use(
     User.findOne({ username: username }, 
       (err, user) => {
       console.log(user)
-      if (err) {return done(err);}
-      if (!user) {return done(null, false, { message: "Incorrect email" });}
-      if (user.password !== password) {return done(null, false, { message: "Incorrect password" });}
-      return done(null, user);
+      if (err) { return done(err) }
+      if (!user) { return done(null, false, { message: "Incorrect email" }) }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (err) return done(err);
+        if (res) return done(null, user);
+        else return done(null, false, { message: "Incorrect password" });
+      });
     });
   })
 );
