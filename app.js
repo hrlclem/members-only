@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-//TEST
+
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
 
 // Auth setup
@@ -41,6 +41,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+// Middleware to access USER
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 //Local Strategy authentification
 passport.use(
@@ -71,6 +76,16 @@ app.post(
     failureRedirect: "/auth/nologin"
   })
 );
+
+app.get("/log-out", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
