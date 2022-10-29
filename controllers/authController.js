@@ -1,11 +1,10 @@
 const User = require("../models/user")
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
-const passport = require("passport");
 
 
 exports.user_login_get = (req,res) => {
-    res.render('login_form', { title: 'Login page' });
+    res.render('login_form', { title: 'Login page'});
 };
 
 exports.user_signup_get = (req,res) => {

@@ -7,6 +7,8 @@ var passport = require("passport");
 var session = require("express-session");
 var LocalStrategy = require("passport-local").Strategy;
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser')
+
 var logger = require('morgan');
 var bcrypt = require("bcryptjs");
 
@@ -26,8 +28,9 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Router setup
 app.use('/', indexRouter);
@@ -37,7 +40,11 @@ app.use('/auth', authRouter);
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
 
 // Auth setup
-app.use(session({ secret: `${process.env.SECRET_SESSION}`, resave: false, saveUninitialized: true }));
+app.use(session({ 
+  secret: `${process.env.SECRET_SESSION}`, 
+  resave: false, 
+  saveUninitialized: false,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
@@ -53,7 +60,6 @@ passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, 
       (err, user) => {
-      console.log(user)
       if (err) { return done(err) }
       if (!user) { return done(null, false, { message: "Incorrect email" }) }
       bcrypt.compare(password, user.password, (err, res) => {
@@ -64,20 +70,32 @@ passport.use(
     });
   })
 );
+
 passport.serializeUser(function(user, done) {
+  console.log("call SERIALIZAE")
   done(null, user._id);
 });
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+  console.log("call DESERIALIZAE")
+  User.findById( _id, (err, user) => {
+    if(err){
+        done(null, false, {error:err});
+        console.log("call DESERIALIZAE YES")
+
+    } else {
+        done(null, user);
+        console.log("call DESERIALIZAE NO")
+
+    }
+  })
 });
 
 app.post(
   "/log-in",
-  passport.authenticate("local", {
-    successRedirect: `/`,
-    failureRedirect: "/auth/nologin"
+    passport.authenticate("local", {
+      successRedirect: "/users/profile",
+      failureRedirect: "/auth/nologin",
+      session: true,
   })
 );
 
@@ -86,6 +104,7 @@ app.get("/log-out", (req, res, next) => {
     if (err) {
       return next(err);
     }
+    console.log("LOGGING OUT")
     res.redirect("/");
   });
 });
