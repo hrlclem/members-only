@@ -13,6 +13,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 
+const User = require("./models/user");
+
 var app = express();
 
 // view engine setup
@@ -42,8 +44,10 @@ app.use(express.urlencoded({ extended: false }));
 
 //Local Strategy authentification
 passport.use(
-  new LocalStrategy((email, password, done) => {
-    User.findOne({ email: email }, (err, user) => {
+  new LocalStrategy((username, password, done) => {
+    User.findOne({ username: username }, 
+      (err, user) => {
+      console.log(user)
       if (err) {return done(err);}
       if (!user) {return done(null, false, { message: "Incorrect email" });}
       if (user.password !== password) {return done(null, false, { message: "Incorrect password" });}
@@ -52,21 +56,21 @@ passport.use(
   })
 );
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user._id);
 });
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
   });
 });
-
-// app.post(
-//   "/log-in",
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/auth/nologin"
-//   })
-// );
+// console.log(passport)
+app.post(
+  "/log-in",
+  passport.authenticate("local", {
+    successRedirect: `/`,
+    failureRedirect: "/auth/nologin"
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

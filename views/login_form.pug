@@ -5,15 +5,15 @@ block content
   p Please log-in:
 
 
-  form(method='POST' action='')
+  form(method='POST' action='/log-in')
     div.form-group
-      label(for='email') Email:
+      label(for='username') Email:
       input#email.form-control(
         type='email', 
         placeholder='Email' 
-        name='email' 
+        name='username' 
         required = 'true'
-        value=(undefined=== user ? '' : user.email))
+        value=(undefined=== user ? '' : user.username))
 
       label(for='password') Password:
       input#password.form-control(

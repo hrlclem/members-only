@@ -23,13 +23,13 @@ block content
         required = 'true'
         value=(undefined=== user ? '' : user.surname))
 
-      label(for='email') Email:
+      label(for='username') Email:
       input#email.form-control(
         type='email', 
         placeholder='Email' 
-        name='email' 
+        name='username' 
         required = 'true'
-        value=(undefined=== user ? '' : user.email))
+        value=(undefined=== user ? '' : user.username))
 
       label(for='password') Password:
       input#password.form-control(

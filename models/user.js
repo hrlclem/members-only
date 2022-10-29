@@ -13,7 +13,7 @@ const UserSchema = new Schema({
         min: [3, "Surname length is too small"],
         required: [true, "please add a surname"]
         },
-    email: {
+    username: {
         type: String, 
         min: [3, "Email length is too small"],
         required: [true, "please add an email"],
