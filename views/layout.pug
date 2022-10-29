@@ -17,14 +17,21 @@ html
               a(href='/')
                 img.bi.logo.logo-header(src='/images/title-logo.svg' height='60')
                 a.d-flex.align-items-center.my-lg-0.me-lg-auto.text-white.text-decoration-none.title-header(href='/') The Comment Club
-            
-            div.header-right
-              ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
-                li.nav-link.text-white 
-                  a(href='/users/log-in')
-                    span.nav-text Log in
-                li.nav-link.text-white
-                  a(href='/users/sign-up')
-                    span.nav-text Sign up
+            if !user
+              div.header-right
+                ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
+                  li.nav-link.text-white 
+                    a(href='/auth/log-in')
+                      span.nav-text Log in
+                  li.nav-link.text-white
+                    a(href='/auth/sign-up')
+                      span.nav-text Sign up
+            else 
+              div.header-right
+                ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
+                  div Welcome, #{user.name} #{user.surname}
+                  a(href="/log-out")
+                    span.nav-text Log out
+
     div.content
       block content

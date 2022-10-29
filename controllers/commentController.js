@@ -13,7 +13,7 @@ exports.comment_list = (req,res) => {
 };
 
 
-exports.comment_add_get = (req,res) => {                            // MEMBER ONLY
+exports.comment_add_get = (req,res) => {   // MEMBER ONLY
     res.render('comment_form', { title: 'Comment form page' });
 };
 
