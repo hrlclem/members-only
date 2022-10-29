@@ -63,7 +63,7 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-// console.log(passport)
+
 app.post(
   "/log-in",
   passport.authenticate("local", {
