@@ -24,30 +24,33 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
+// Auth setup
+app.use(session({ 
+  name: 'sessionCookie',
+  secret: `${process.env.SECRET_SESSION}`, 
+  resave: true, 
+  saveUninitialized: false,
+}));
+app.use(passport.session());
+app.use(passport.initialize());
+app.use(express.urlencoded({ extended: false }));
+
+
 // server setup
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Router setup
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
 
-// Auth setup
-app.use(session({ 
-  secret: `${process.env.SECRET_SESSION}`, 
-  resave: false, 
-  saveUninitialized: false,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
 
 // Middleware to access USER
 app.use(function(req, res, next) {
@@ -72,20 +75,16 @@ passport.use(
 );
 
 passport.serializeUser(function(user, done) {
-  console.log("call SERIALIZAE")
-  done(null, user._id);
+  done(null, user.id);
 });
+
 passport.deserializeUser(function(id, done) {
-  console.log("call DESERIALIZAE")
-  User.findById( _id, (err, user) => {
+  User.findById(id, (err, user) => {
     if(err){
         done(null, false, {error:err});
-        console.log("call DESERIALIZAE YES")
 
     } else {
         done(null, user);
-        console.log("call DESERIALIZAE NO")
-
     }
   })
 });
