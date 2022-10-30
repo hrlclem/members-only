@@ -21,7 +21,6 @@ exports.user_add_post = (req,res) => {
 };
 
 exports.user_detail = (req,res) => {
-    console.log(req.user)
-    res.render('user_detail', { title: 'User profile page' });
+    res.render('user_detail', { title: 'User profile page', user: req.user });
 };
 
