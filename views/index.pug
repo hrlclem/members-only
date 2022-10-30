@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  h1=title
-    h3=user
-    if user
+  h1=title 
+
+    if (user)
       h1 WELCOME BACK #{user.username}
       a(href="/log-out") LOG OUT
 

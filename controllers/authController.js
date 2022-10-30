@@ -32,8 +32,6 @@ exports.user_signup_post = [
 
   async (req, res, next) => {
     const errors = validationResult(req);
-    console.log(errors)
-    console.log(req)
     if (!errors.isEmpty()) {
       return res.render("signup_form", { title: "Sign Up", passwordConfirmationError: "Passwords must be the same!" });
     }

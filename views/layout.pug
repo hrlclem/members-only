@@ -17,7 +17,7 @@ html
               a(href='/')
                 img.bi.logo.logo-header(src='/images/title-logo.svg' height='60')
                 a.d-flex.align-items-center.my-lg-0.me-lg-auto.text-white.text-decoration-none.title-header(href='/') The Comment Club
-            if !currentUser
+            if !user
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
                   li.nav-link.text-white 
@@ -32,7 +32,7 @@ html
             else 
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
-                  div Welcome, #{user.name} #{user.surname}
+                  div.text-white.welcome-txt Welcome, #{user.name}
                   a(href="/log-out")
                     span.nav-text Log out
 

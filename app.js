@@ -32,18 +32,32 @@ app.use(session({
   resave: true, 
   saveUninitialized: false,
 }));
-app.use(passport.session());
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 
 // server setup
 app.use(logger('dev'));
-app.use(cookieParser());
+app.use(cookieParser(`${process.env.SECRET_SESSION}`));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware to access USER
+app.use((req, res, next) => {
+  console.log("  ");
+
+  console.log("auth? : "+req.isAuthenticated());
+  console.log("req session: "+req.session.passport);
+  console.log("req user: "+req.user);
+  // console.log("res locals: "+res.locals);
+
+  console.log("  ");
+
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // Router setup
 app.use('/', indexRouter);
@@ -51,12 +65,6 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
 
-
-// Middleware to access USER
-app.use(function(req, res, next) {
-  res.locals.currentUser = req.user;
-  next();
-});
 
 //Local Strategy authentification
 passport.use(
@@ -92,9 +100,9 @@ passport.deserializeUser(function(id, done) {
 app.post(
   "/log-in",
     passport.authenticate("local", {
+      session: true,
       successRedirect: "/users/profile",
       failureRedirect: "/auth/nologin",
-      session: true,
   })
 );
 
