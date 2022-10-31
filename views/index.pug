@@ -1,12 +1,25 @@
 extends layout
 
 block content
-  h1=title 
 
-    if (user)
-      h1 WELCOME BACK #{user.username}
-      a(href="/log-out") LOG OUT
+      if (user)
+        div.homepage-banner
+          div.left-hmp-banner
+            h1=title 
+            h3 Welcome back to the Club #{user.username} !
+            span Below here, you can see all the comments posted by all our members. Feel free to share with them!
+            a(href="/log-out") LOG OUT
+          div.right-hmp-banner
+              img.hmp-pic(src='/images/hmp-pic.jpg' height='90%')
 
-    else
-      h2 Please log in here:
-        a(href='/auth/log-in') Log-in
+      else
+        div.homepage-banner
+          div.left-hmp-banner
+            h1=title 
+            h3 Please feel free to log-in and join the club.
+            h5.password-div Our password is 1234
+            a(href='/auth/log-in') Log-in
+          div.right-hmp-banner
+              img.hmp-pic(src='/images/hmp-pic.jpg' height='90%')
+
+      // SHOW ALL COMMENTS BELOW

@@ -5,7 +5,7 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'Homepage (See all comments)',
+    title: 'The Comment Club',
     user: res.locals.currentUser,
   });
 });

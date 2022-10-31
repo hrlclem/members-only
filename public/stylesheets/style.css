@@ -1,20 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color:#f2f3f3
+  font: 14px 'Libre Caslon Text', serif;
+  background-color:#000000
 }
 
 a {
   color: #00B7FF;
 }
 
+
+/* HEADER CSS */
+.container{
+  margin-left: 20%;
+}
 .header{
-  display:flex;
-  justify-content: space-between;
   margin-bottom: 40px;
 }
-
 .header-left{
   display:flex;
+  justify-content: center;
+  text-align: center;
 }
   .title-header{
     font-size: 25px;
@@ -23,7 +31,6 @@ a {
   .logo-header{
     filter: invert(99%) sepia(5%) saturate(122%) hue-rotate(76deg) brightness(120%) contrast(100%);
   }
-
   .header-right{
     display:flex;
     align-items: center;
@@ -42,6 +49,13 @@ a {
   border-radius: 12px;
   margin-left: 20px;
 }
+.welcome-txt{
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 .nav-link:hover{
   background-color: #111213;
 }
@@ -56,3 +70,32 @@ a {
     margin-top: 5%;
     filter: invert(100%) sepia(100%) saturate(38%) hue-rotate(321deg) brightness(110%) contrast(110%);
   }
+
+
+/* BODY CSS */
+.content{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+  .homepage-banner{
+    display:flex;
+    width: 90%;
+    height: 90%;
+    position: relative;
+    margin: 30px;
+  }
+    .left-hmp-banner{
+      width: 600px;
+      height: 40%;
+      position: absolute;
+      top: 30%;
+      left: 0;
+      opacity: 0.5;   
+      align-items: center;
+      background-color: rgb(153, 151, 151);
+    }
+    .hmp-pic{
+      z-index: 9;
+      left: 40%;
+      margin: 30px;
+    }
