@@ -11,35 +11,34 @@ html
   body
     header
       div.px-3.py-2.header
-        div.container
-          div.d-flex.flex-wrap.logo-header-div
+        div.container-div
+          div.logo-header-div
             div.header-left
               a(href='/')
-                img.bi.logo.logo-header(src='/images/title-logo.svg' height='60')
+                div.logo-text-div
+                  a(href='/').me-lg-auto.text-decoration-none.logo-text-up CO
+                  a(href='/').me-lg-auto.text-decoration-none.logo-text-down CL
                 a.d-flex.align-items-center.my-lg-0.me-lg-auto.text-white.text-decoration-none.title-header(href='/') The Comment Club
-              div.logo-text-div
-                a(href='/').me-lg-auto.text-white.text-decoration-none.logo-text-up CO
-                a(href='/').me-lg-auto.text-white.text-decoration-none.logo-text-down CL
 
             if !user
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
-                  li.nav-link.text-white 
+                  li.nav-link.text-white.header-btn
                     a(href='/auth/log-in')
-                      span.nav-text Log in
-                  li.nav-link.text-white
+                      span.nav-text.header-btn Log in
+                  li.nav-link.text-white.header-btn
                     a(href='/auth/sign-up')
-                      span.nav-text Sign up
-                  li.nav-link.text-white
+                      span.nav-text.header-btn Sign up
+                  li.nav-link.text-white.header-btn
                     a(href="/log-out")
-                      span.nav-text Log out
+                      span.nav-text.header-btn Log out
             else 
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
                   div.text-white.welcome-txt Welcome, #{user.name}
                   li.nav-link.text-white
                     a(href="/log-out")
-                      span.nav-text Log out
+                      span.nav-text.header-btn Log out
 
     div.content
       block content
