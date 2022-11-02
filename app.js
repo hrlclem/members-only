@@ -46,15 +46,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware to access USER
 app.use((req, res, next) => {
-  console.log("  ");
-
-  console.log("auth? : "+req.isAuthenticated());
-  console.log("req session: "+req.session.passport);
-  console.log("req user: "+req.user);
-  // console.log("res locals: "+res.locals);
-
-  console.log("  ");
-
   res.locals.currentUser = req.user;
   next();
 });
@@ -64,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
+// app.get("/auth/premium", (req, res) => res.render("add_premium"));
 
 
 //Local Strategy authentification
@@ -97,8 +89,7 @@ passport.deserializeUser(function(id, done) {
   })
 });
 
-app.post(
-  "/log-in",
+app.post("/log-in",
     passport.authenticate("local", {
       session: true,
       successRedirect: "/users/profile",

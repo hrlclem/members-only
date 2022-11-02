@@ -3,3 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+
+    form.auth-form(action="/comment-form" method="POST")
+      h2= title 
+      div.title-container
+        label(for="messageTitle") Title:
+        input#messageTitle(type="text" name="messageTitle" required="true" maxLength="50")
+      div.text-container
+        label(for="messageText") Message:
+        input#messageText(type="text" name="messageText" required="true")
+      button(type="submit") Submit Message    

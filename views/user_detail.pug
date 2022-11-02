@@ -1,6 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-    h3 The user is #{user.name}
+  if user
+    h1 Welcome, #{user.name}
+
+    if user.memberStatus == false
+      div Find the passcode on the homepage and click here to become a member
+      div
+        a.log-in-out-btn(href="/users/premium") Become premium
+  else 
+    div.text-white.welcome-txt Please sign-up before checking your profile page!
+    div.profile-btns
+        a.log-in-out-btn(href="/auth/log-in") Log-in
+        a.log-in-out-btn(href="/auth/sign-up") Sign-in
+

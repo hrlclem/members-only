@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  if user
+    h1 Welcome, #{user.name}
+
+    form(method='POST' action='/user/premium')
+    div.form-group
+        label(for='passcode') Enter the passcode to become PREMMIUM
+        input#passcode.form-control(
+        type='text', 
+        placeholder='passcode' 
+        name='passcode' 
+        required = 'true'
+        )
+
+        button.btn.btn-primary(type='submit') Submit
+
+
+  else 
+    div.text-white.welcome-txt Please sign-up before checking your profile page!
+    div.profile-btns
+        a.log-in-out-btn(href="/auth/log-in") Log-in
+        a.log-in-out-btn(href="/auth/sign-up") Sign-in
+
+  if (passcodeError)
+    p #{passcodeError}

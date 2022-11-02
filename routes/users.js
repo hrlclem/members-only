@@ -9,6 +9,8 @@ router.get("/", user_controller.users_list); // List of users
 router.get("/add", user_controller.user_add_get); // Form add user
 router.post("/add", user_controller.user_add_post); // POST add user
 router.get("/profile", user_controller.user_detail); // User detail
+router.get("/premium", user_controller.add_premium_get) // Form Become a premium member
+router.post("/premium", user_controller.add_premium_post) // POST Become a premium member
 
 router.get("/comments", comment_controller.comment_list); // Form add comment
 router.get("/comment/add", comment_controller.comment_add_get); // Form add comment    // MEMBER ONLY
