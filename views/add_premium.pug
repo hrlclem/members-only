@@ -4,8 +4,8 @@ block content
   if user
     h1 Welcome, #{user.name}
 
-    form(method='POST' action='/user/premium')
-    div.form-group
+    form(method='POST' action='')
+      div.form-group
         label(for='passcode') Enter the passcode to become PREMMIUM
         input#passcode.form-control(
         type='text', 
@@ -14,7 +14,7 @@ block content
         required = 'true'
         )
 
-        button.btn.btn-primary(type='submit') Submit
+      button.btn.btn-primary(type='submit') Submit
 
 
   else 

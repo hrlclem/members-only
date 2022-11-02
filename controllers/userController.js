@@ -30,25 +30,25 @@ exports.add_premium_get = (req,res) => {
 
 exports.add_premium_post = [
     body("passcode").trim().isLength({ min: 1 }).escape().withMessage("Passcode must be specified."),
-    
+
     async (req, res, next) => {
+        console.log('yes')
       const errors = validationResult(req);
-  
       if (!errors.isEmpty()) {
         console.log(1)
         return res.render("add_premium", { title: "Enter the password to become a premium member!", user: req.user, errors: errors.array() });
       } else if (req.body.passcode != process.env.ADMIN_PASSCODE) {
         console.log(2)
-
         return res.render("add_premium", { title: "Enter the password to become a premium member!", user: req.user, passcodeError: "Wrong Passcode! Try again" });
       }
       const user = new User(req.user);
       user.memberStatus = true;
       console.log(3)
+      console.log(user)
 
-      await User.findByIdAndUpdate(res.user._id, user, {}, (err) => {
+      await User.findByIdAndUpdate(user.id, user, {}, (err) => {
         if (err) return next(err);
         return res.redirect("/");
-      });
+      }).clone();
     },
   ];
