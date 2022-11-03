@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  if user
+  if (user)
     h1 Welcome, #{user.name}
 
     if user.memberStatus == false
@@ -32,13 +32,11 @@ block content
         each message in messages
           div.message-container 
             h4.message-title= message.title
-            h5.author= user.name
+            h5.author= message.user.name
             p.message-text= message.content 
-
+            
   else 
     div.text-white.welcome-txt Please sign-up before checking your profile page!
     div.profile-btns
         a.log-in-out-btn(href="/auth/log-in") Log-in
         a.log-in-out-btn(href="/auth/sign-up") Sign-in
-
-//- Shows all his comments and ability to add new one

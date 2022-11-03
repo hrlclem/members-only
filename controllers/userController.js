@@ -22,11 +22,12 @@ exports.user_add_post = (req,res) => {
 };
 
 exports.user_detail = async (req, res, next) => {
-
-    console.log(req.user)
+    if(!req.user){
+      return res.redirect("/auth/log-in")
+    }
+    
     try{
-      const messages = await Message.find().sort([["date", "descending"]]).populate("user");
-      console.log(messages)
+      const messages = await Message.find({user: req.user.id}).sort([["date", "descending"]]).populate("user");
       return res.render('user_detail', { title: 'User profile page', user: req.user, messages: messages});
     } catch (err) {
       return  next(err);

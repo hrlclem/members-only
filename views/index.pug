@@ -12,8 +12,13 @@ block content
           div.right-hmp-banner
               img.hmp-pic(src='/images/hmp-pic.jpg' height='90%')
 
-
-          //- // Add possibility if not member but not PREMIUM
+        div.comment-list
+          each message in messages
+            div.message-container 
+              h4.message-title= message.title
+              h5.author= message.user.name
+              p.message-text= message.content 
+              p.message-date= message.date
 
 
       else
@@ -26,7 +31,11 @@ block content
           div.right-hmp-banner
               img.hmp-pic(src='/images/hmp-pic.jpg' height='90%')
 
-      div.all-comments-div
-        header checkthis out
 
-      //- // SHOW ALL COMMENTS BELOW
+        div.comment-list
+          each message in messages
+            div.message-container 
+              h4.message-title= message.title
+              h5.author Anonymous
+              p.message-text= message.content 
+              p.message-date= message.date

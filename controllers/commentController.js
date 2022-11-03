@@ -9,12 +9,6 @@ const async = require("async");
 const { param } = require("../routes");
 
 
-
-exports.comment_list = (req,res) => {
-    res.render('comment_list', { title: 'Comment list page' });
-};
-
-
 exports.comment_add_get = (req,res) => {   // MEMBER ONLY
     res.render('comment_form', { title: 'Comment form page' });
 };
@@ -36,7 +30,6 @@ exports.comment_add_post = [
       if (!errors.isEmpty()) {
         return res.render("user_detail", { title: "User profile page", user: req.user, errors: errors.array() });
       } 
-      console.log("running and adding message")
       const message = new Message({
         user: req.user.id,
         title: req.body.messageTitle,
@@ -50,8 +43,3 @@ exports.comment_add_post = [
       })
     },
 ];
-
-exports.comment_detail = (req,res) => {
-    res.render('comment_detail', { title: 'Comment detail page' });
-};
-

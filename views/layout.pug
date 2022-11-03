@@ -29,13 +29,13 @@ html
                   li.nav-link.text-white.header-btn
                     a(href='/auth/sign-up')
                       span.nav-text.header-btn Sign up
-                  li.nav-link.text-white.header-btn
-                    a(href="/log-out")
-                      span.nav-text.header-btn Log out
             else 
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
-                  div.text-white.welcome-txt Welcome, #{user.name}
+                  a.text-white.welcome-txt(href="/users/profile") Welcome, #{user.name}
+                  li.nav-link.text-white
+                    a(href="/users/comment/add")
+                      span.nav-text.header-btn Add a comment
                   li.nav-link.text-white
                     a(href="/log-out")
                       span.nav-text.header-btn Log out
