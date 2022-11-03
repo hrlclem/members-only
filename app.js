@@ -55,7 +55,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.get("/auth/nologin", (req, res) => res.render("nologin"));
-// app.get("/auth/premium", (req, res) => res.render("add_premium"));
 
 
 //Local Strategy authentification

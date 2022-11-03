@@ -8,6 +8,33 @@ block content
       div Find the passcode on the homepage and click here to become a member
       div
         a.log-in-out-btn(href="/users/premium") Become premium
+
+    else 
+      div Add a new comment
+      form.auth-form(action="/users/comment/add" method="POST")
+        div.title-container
+          label(for="messageTitle") Title:
+          input#messageTitle(type="text" 
+            name="messageTitle" 
+            required="true" 
+            maxLength="30"
+          )
+          label(for="messageText") Message:
+          input#messageText(
+            type="text" 
+            name="messageText" 
+            required="true" 
+            maxLength="300"
+          )
+        button(type="submit") Submit Message    
+
+      div.comment-list
+        each message in messages
+          div.message-container 
+            h4.message-title= message.title
+            h5.author= user.name
+            p.message-text= message.content 
+
   else 
     div.text-white.welcome-txt Please sign-up before checking your profile page!
     div.profile-btns
