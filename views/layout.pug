@@ -16,16 +16,15 @@ html
             div.header-left
               a(href='/')
                 div.logo-text-div
-                  a(href='/').me-lg-auto.text-decoration-none.logo-text-up CO
-                  a(href='/').me-lg-auto.text-decoration-none.logo-text-down CL
+                  a(href='/').text-decoration-none.logo-text-up.logo-text CO
+                  a(href='/').text-decoration-none.logo-text-down.logo-text CL
                 a.d-flex.align-items-center.my-lg-0.me-lg-auto.text-white.text-decoration-none.title-header(href='/') The Comment Club
 
             if !user
               div.header-right
-                ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
-                  li.nav-link.text-white.header-btn
-                    a(href='/auth/log-in')
-                      span.nav-text.header-btn Log in
+                ul.nav.nav-right
+                  a.header-click(href='/auth/log-in')
+                    span.nav-text.header-click Log in
                   li.nav-link.text-white.header-btn
                     a(href='/auth/sign-up')
                       span.nav-text.header-btn Sign up
@@ -33,9 +32,10 @@ html
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
                   a.text-white.welcome-txt(href="/users/profile") Welcome, #{user.name}
-                  li.nav-link.text-white
-                    a(href="/users/comment/add")
-                      span.nav-text.header-btn Add a comment
+                  if user.memberStatus == true
+                    li.nav-link.text-white
+                      a(href="/users/comment/add")
+                        span.nav-text.header-btn Add a comment
                   li.nav-link.text-white
                     a(href="/log-out")
                       span.nav-text.header-btn Log out

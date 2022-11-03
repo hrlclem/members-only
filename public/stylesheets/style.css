@@ -43,6 +43,9 @@ a {
       top:4px;
       color:rgb(68, 68, 68);
     }
+    .logo-text:hover{
+      color:rgb(68, 68, 68);    
+    }
   .title-header{
     font-size: 25px;
     margin-left: 50px;
@@ -54,6 +57,16 @@ a {
     display:flex;
     align-items: center;
   }
+    .nav-right{
+      display:flex;
+      align-items: center;
+      font-family: 'Libre Caslon Text', serif;
+
+    }
+    .header-click{
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-right: 22px;
+    }
     .header-btn{
       font-family: 'Noto Sans JP', sans-serif;
     }
@@ -67,12 +80,11 @@ a {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 12px 20px 12px 20px;
-  background-color: #2c2f31;
+  padding: 10px 20px 10px 20px;
+  background-color: #202325;
   border-radius: 12px;
   margin-left: 20px;
   font-family: 'Libre Caslon Text', serif;
-
 }
 .welcome-txt{
   margin-left: 20px;
@@ -106,9 +118,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 100%;
     height: 50%;
-    margin: 30px;
   }
     .left-hmp-banner{
       width: 100%;
@@ -129,16 +140,17 @@ a {
         margin-bottom: 60px;
       }
       .log-in-out-btn{
+        margin-top: 40px;
         padding: 9px;
         font-size: 20px;
         padding-left: 40px;
         padding-right: 40px;
         border-radius: 20px;
-        margin-top: 60px;
         background-color: rgb(99, 99, 99);
         opacity: 0.7;
         color:white;
         text-decoration: none;
+        float: right;
       }
       .log-in-out-btn:hover{
         text-decoration: none;
@@ -156,6 +168,170 @@ a {
           object-fit: cover;
           height: fit-content; 
           width:100%;        
-          margin-top: 60px;
-          margin-bottom: 60px;
         }
+
+        .hr-separate{
+          width: 60%;
+          margin-bottom: 80px;
+          margin-top: 120px;
+          height: 0.3px;
+          background-color:grey;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+
+
+
+
+
+/* COMMENT */
+.title{
+  color:white;
+  width:100%;
+  font-size: 2rem;
+  padding-bottom: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+
+}
+.comment-list{
+  padding: 5px;
+  margin-bottom: 120px;
+}
+  .message-container{
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 8px;
+  }
+    .message-first-line{
+      display:flex;
+      justify-content: space-between;
+      text-align: center;
+      padding-bottom: 16px;
+    }
+      .message-title{
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.7rem;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+      .message-author{
+        font-size: 1rem;
+        text-align: center;
+      }
+      .message-text{
+        font-size: 1.3rem;
+      }
+      .message-date{
+        font-size: 0.7rem;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+/* FORMS */
+.form-container{
+  background-color: white;
+  padding: 40px;
+  width: 70%;
+  border-radius: 18px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 60px;
+}
+  .title-form{
+    color:rgb(0, 0, 0);
+    width:100%;
+    padding-bottom: 6px;
+  }
+  .text-infos{
+    font-size: 1.5rem;
+    color: rgb(51, 50, 50);
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-bottom: 20px;
+  }
+  .form-control{
+    margin-bottom: 12px;
+  }
+  .btn-primary{
+    background-color: #202325;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0;
+    float:right;
+  }
+  .text-message-height{
+    height:200px;
+  }
+
+
+
+
+
+/* PROFILE */
+.title-profile{
+  color:rgb(255, 255, 255);
+  width:100%;
+  padding-bottom: 6px;
+}
+.text-infos-profile{
+  font-size: 1.5rem;
+  color:rgb(255, 255, 255);
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-bottom: 20px;
+}
+
+.profile-hmp{
+  display:flex;
+}
+.form-container-profile{
+  background-color: white;
+  padding: 40px;
+  width: 65%;
+  border-radius: 18px;
+  display: block;
+  margin-right: auto;
+  padding-bottom: 60px;
+}
+  .text-infos-nocomment{
+    font-size: 0.8rem;
+    text-align: center;
+    color: rgb(51, 50, 50);
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .comment-list-profile{
+    width:30%;
+  }
+  .profile-comment-div{
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+  }  
+  .profile-nocomment-div{
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: 8px;
+  }
+    .message-container-profile {
+      background-color: rgb(224, 221, 221);
+      padding: 10px;
+      border-radius: 8px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 8px;
+    }
+      .message-title-profile {
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1rem;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+      .message-text-profile {
+        color: black;
+        font-size: 0.8rem;
+      }

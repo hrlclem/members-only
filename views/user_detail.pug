@@ -2,38 +2,49 @@ extends layout
 
 block content
   if (user)
-    h1 Welcome, #{user.name}
+    h1.title-profile Welcome, #{user.name}
 
     if user.memberStatus == false
-      div Find the passcode on the homepage and click here to become a member
+      div.text-infos-profile Find the passcode on the homepage and click here to become a member
       div
         a.log-in-out-btn(href="/users/premium") Become premium
 
     else 
-      div Add a new comment
-      form.auth-form(action="/users/comment/add" method="POST")
-        div.title-container
-          label(for="messageTitle") Title:
-          input#messageTitle(type="text" 
-            name="messageTitle" 
-            required="true" 
-            maxLength="30"
-          )
-          label(for="messageText") Message:
-          input#messageText(
-            type="text" 
-            name="messageText" 
-            required="true" 
-            maxLength="300"
-          )
-        button(type="submit") Submit Message    
+      div.profile-hmp
+        div.form-container-profile
+          div.text-infos Here, you can add a new comment
 
-      div.comment-list
-        each message in messages
-          div.message-container 
-            h4.message-title= message.title
-            h5.author= message.user.name
-            p.message-text= message.content 
+          form(action="/users/comment/add" method="POST")
+            div.form-group
+              label.label-form(for="messageTitle") Title:
+              input#messageTitle.form-control(type="text" 
+                name="messageTitle" 
+                required="true" 
+                maxLength="30"
+              )
+              label.label-form(for="messageText") Message:
+              input#messageText.form-control.text-message-height(
+                type="text" 
+                name="messageText" 
+                required="true" 
+                maxLength="300"
+              )
+            button.btn.btn-primary(type="submit") Submit Message   
+            
+        div.comment-list-profile
+          div.text-infos-profile Here are all your comments: 
+          if !messages.length < 0
+            div.profile-comment-div
+              each message in messages
+                div.message-container-profile 
+                  h4.message-title-profile= message.title
+                  p.message-text-profile= message.content 
+          else
+            div.profile-nocomment-div
+              div.text-infos-nocomment You don't have any comments yet.
+              div.text-infos-nocomment Feel free to add new ones!
+
+
             
   else 
     div.text-white.welcome-txt Please sign-up before checking your profile page!

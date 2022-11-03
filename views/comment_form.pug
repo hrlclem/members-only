@@ -1,21 +1,23 @@
 extends layout
 
 block content
-  h1= title
-    div Add a new comment
-    form.auth-form(action="/users/comment/add" method="POST")
-      div.title-container
-        label(for="messageTitle") Title:
-        input#messageTitle(type="text" 
+  div.form-container
+    h1.title-form= title
+
+    form(action="/users/comment/add" method="POST")
+      div.form-group
+        label.label-form(for="messageTitle") Title:
+        input#messageTitle.form-control(type="text" 
           name="messageTitle" 
           required="true" 
           maxLength="30"
         )
-        label(for="messageText") Message:
-        input#messageText(
+        label.label-form(for="messageText") Message:
+        input#messageText.form-control.text-message-height(
           type="text" 
           name="messageText" 
           required="true" 
           maxLength="300"
         )
-      button(type="submit") Submit Message    
+      button.btn.btn-primary(type="submit") Submit Message    
+

@@ -2,18 +2,19 @@ extends layout
 
 block content
   if user
-    h1 Welcome, #{user.name}
-
-    form(method='POST' action='')
-      div.form-group
-        label(for='passcode') Enter the passcode to become PREMIUM
-        input#passcode.form-control(
-        type='text', 
-        placeholder='Enter the passcode' 
-        name='passcode' 
-        required = 'true'
-        )
-      button.btn.btn-primary(type='submit') Submit
+    h1.title-profile Welcome, #{user.name}
+    
+    div.form-container
+      form(method='POST' action='')
+        div.form-group
+          label.text-infos(for='passcode') Enter the passcode to become PREMIUM
+          input#passcode.form-control(
+          type='text', 
+          placeholder='Enter the passcode' 
+          name='passcode' 
+          required = 'true'
+          )
+        button.btn.btn-primary(type='submit') Submit
 
 
   else 

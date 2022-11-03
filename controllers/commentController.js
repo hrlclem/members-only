@@ -9,8 +9,14 @@ const async = require("async");
 const { param } = require("../routes");
 
 
-exports.comment_add_get = (req,res) => {   // MEMBER ONLY
-    res.render('comment_form', { title: 'Comment form page' });
+exports.comment_add_get = (req,res) => {
+  if(!req.user){
+    return res.redirect("/auth/log-in")
+  }
+  if(!req.user.memberStatus == true){
+    return res.redirect("/users/profile")
+  }
+  res.render('comment_form', { title: 'Add a new comment' });
 };
 
 exports.comment_add_post = [
