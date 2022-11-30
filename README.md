@@ -2,6 +2,8 @@
 ## Introduction
 💡 Members Club is a new project following The Odin Project cursus. It is an idea sharing website made to practice user authentication and restricted features and access to specific members (regular, admin and others).
 \
+The demo is available here: https://members-only-zeta.vercel.app
+\
 \
 ![](https://github.com/hrlclem/members-only/blob/main/member-club.gif)
 
