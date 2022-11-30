@@ -395,8 +395,92 @@ a {
       text-align: left;
     }
 }
-@media (max-width:700){
+
+
+@media (max-width:800px){
+  .homepage-banner{
+    width:100%;
+    margin:0 !important;
+    
+  }
+  .header-left{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+  }
   .header-right{
-    display: block;
+    width:40%;
+    display:flex !important;
+  }
+  .nav-right{
+    display:flex !important;
+    width:100%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .title-header{
+    max-height: 50px;
+  }
+  .header{
+    padding:0;
+    margin-right: 0;
+    width:95%;
+  }
+  .container-div{
+   margin-left:1%;
+   margin-right:1%;
+   width:100%;
+  }
+  .header-btn{
+    margin-left: 2%;
+    padding:2%;
+    width: 55px;
+  }
+  .header-click{
+    margin-right: 2%;
+    margin-left: 5%;
+    width: 55px;
+  }
+  .logo-header-div{
+    gap:0;
+    width: 100%;
+  }
+  .logo-text-div{
+    transform: translateY(-6px);
+  }
+  .content{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .heading-hmp{
+    width: 100%;
+  }
+  .title-hmp{
+    font-size: 1.8rem;
+  }
+  .right-hmp-banner{
+    margin: 0;
+    width: 100%;
+  }
+  .hmp-pic{
+    margin: 0;
+    margin-top: 5%;
+    width: 100%;
+  }
+  .hr-separate{
+    margin-top: 80px;
+    height: 0.3px;
+  }
+  .message-container{
+    padding:5%;
+  }
+  .log-in-out-btn{
+    float: left;
+  }
+  .form-container{
+    margin: 5%;
+    padding: 5%;
+    width: 90%;
+    padding-bottom: 20%;
   }
 }
