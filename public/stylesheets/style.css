@@ -3,7 +3,7 @@
 
 body {
   font: 14px 'Libre Caslon Text', serif;
-  background-color:#101010
+  background-color:#0f1925
 }
 
 a {
@@ -47,7 +47,7 @@ a {
       color:rgb(68, 68, 68);    
     }
   .title-header{
-    font-size: 25px;
+    font-size: 1rem;
     margin-left: 50px;
   }
   .logo-header{
@@ -119,7 +119,10 @@ a {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50%;
+    height: 90%;
+    min-height: 600px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
     .left-hmp-banner{
       width: 100%;
@@ -159,7 +162,7 @@ a {
         color:grey;
     }
       .right-hmp-banner{
-        width: 50%;
+        width: 60%;
         align-items: center;
       }
         .hmp-pic{
@@ -167,7 +170,8 @@ a {
           overflow:hidden;
           object-fit: cover;
           height: fit-content; 
-          width:100%;        
+          width:100%;  
+          height:80%;      
         }
 
         .hr-separate{
@@ -201,16 +205,16 @@ a {
   .message-container{
     background-color: rgb(255, 255, 255);
     border-radius: 12px;
-    padding: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-bottom: 8px;
+    padding: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-bottom: 2rem;
   }
     .message-first-line{
       display:flex;
       justify-content: space-between;
       text-align: center;
-      padding-bottom: 16px;
+      padding-bottom: 0.5rem;
     }
       .message-title{
         font-weight: bold;
@@ -223,7 +227,8 @@ a {
         text-align: center;
       }
       .message-text{
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        font-weight: 200;
       }
       .message-date{
         font-size: 0.7rem;
@@ -335,3 +340,63 @@ a {
         color: black;
         font-size: 0.8rem;
       }
+
+/* FOOTER */
+.footer {
+  font-family: arial;
+  color: #837f7f;
+  font-size: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  text-align: center;
+  background-color:#0f1925;
+  opacity: 50%;
+}
+
+
+
+@media (max-width:1200px){
+  .homepage-banner{
+    display: block;
+  }
+  .right-hmp-banner{
+    width: 90%;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    margin-right: 0;
+  }
+  .log-in-out-btn{
+    margin-top: 1rem;
+  }
+    .hmp-pic{
+      display:flex;
+      justify-content: center;
+      text-align: center;
+      position: relative;   
+      margin-top: 2rem;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .profile-hmp{
+      display:block;
+    }
+    .form-container-profile{
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .comment-list-profile{
+      width:100%;
+    }
+    .message-title{
+      text-align: left;
+    }
+}
+@media (max-width:700){
+  .header-right{
+    display: block;
+  }
+}

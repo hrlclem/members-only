@@ -32,13 +32,15 @@ html
               div.header-right
                 ul.nav.col-lg-auto.justify-content-center.my-md-0.text-small.nav-right
                   a.text-white.welcome-txt(href="/users/profile") Welcome, #{user.name}
-                  if user.memberStatus == true
-                    li.nav-link.text-white
-                      a(href="/users/comment/add")
-                        span.nav-text.header-btn Add a comment
+                  //- if user.memberStatus == true
+                  //-   li.nav-link.text-white
+                  //-     a(href="/users/comment/add")
+                  //-       span.nav-text.header-btn Add a comment
                   li.nav-link.text-white
                     a(href="/log-out")
                       span.nav-text.header-btn Log out
 
     div.content
       block content
+
+    div.footer Clément Hurel © All rights reserved, 2022
